@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My High School</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Home Section -->
+    <header id="home" style="background-image: url('images/school-background.jpg');">
+        <h1>Welcome to My High School</h1>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Our School</h2>
+        <p>Our school is dedicated to providing quality education...</p>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <h2>School Gallery</h2>
+        <div class="gallery-container">
+            <img src="images/photo1.jpg" alt="School Image 1">
+            <img src="images/photo2.jpg" alt="School Image 2">
+            <!-- Add more images as needed -->
+        </div>
+    </section>
+
+    <!-- History Section -->
+    <section id="history">
+        <h2>School History & Pass Rates</h2>
+        <p>Our pass rate has improved significantly from 2007 to 2023...</p>
+        <!-- Insert a table or chart showing pass rates -->
+    </section>
+
+    <!-- Classes Section -->
+    <section id="classes">
+        <h2>Our Classes</h2>
+        <div class="class-container">
+            <div class="class">
+                <h3>Class A - Accounting</h3>
+                <ul>
+                    <li>Accounting</li>
+                    <li>Economics</li>
+                    <li>Business Studies</li>
+                    <!-- Add more subjects as needed -->
+                </ul>
+            </div>
+            <div class="class">
+                <h3>Class B - Sciences</h3>
+                <ul>
+                    <li>Mathematics</li>
+                    <li>Physical Sciences</li>
+                    <li>Life Sciences</li>
+                    <!-- Add more subjects as needed -->
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Form Section -->
+    <section id="application">
+        <h2>Apply to Our School</h2>
+        <form action="#">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+            
+            <label for="course">Course Interest:</label>
+            <select id="course" name="course">
+                <option value="accounting">Accounting</option>
+                <option value="sciences">Sciences</option>
+            </select>
+            
+            <button type="submit">Apply Now</button>
+        </form>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form action="#">
+            <label for="fullname">Full Name:</label>
+            <input type="text" id="fullname" name="fullname">
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+            
+            <label for="message">Message:</label>
+            <textarea id="message" name="message"></textarea>
+            
+            <button type="submit">Send Message</button>
+        </form>
+        <div id="map">
+            <!-- Insert map iframe or API here -->
+        </div>
+    </section>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
