@@ -146,3 +146,48 @@ var ctx = document.getElementById('performanceChart').getContext('2d');
                 }
             }
         });
+
+function toggleStreamOptions() {
+            var grade = document.getElementById('grade').value;
+            var streamOptions = document.getElementById('streamOptions');
+            if (grade == '10' || grade == '11' || grade == '12') {
+                streamOptions.style.display = 'block';
+            } else {
+                streamOptions.style.display = 'none';
+            }
+        }
+
+        function uploadDocuments() {
+            var docType = document.getElementById('documentType').value;
+            var fileInput = document.getElementById('documents');
+            var uploadedFiles = document.getElementById('uploadedFiles');
+        
+            if (!docType) {
+                alert('Please select a document type.');
+                return;
+            }
+        
+            var files = fileInput.files;
+            if (files.length === 0) {
+                alert('Please select at least one file to upload.');
+                return;
+            }
+        
+            for (var i = 0; i < files.length; i++) {
+                var file = files[i];
+                var fileDiv = document.createElement('div');
+                fileDiv.textContent = `${file.name} (${docType})`;
+                uploadedFiles.appendChild(fileDiv);
+            }
+        
+            // Optionally clear file input after upload
+            fileInput.value = '';
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('admissionForm').onsubmit = function(event) {
+                event.preventDefault(); // Prevent the default form submission
+                alert('Application Submitted'); // Show the alert
+                window.location.href = 'index.html'; // Redirect to the home page
+            };
+        });
