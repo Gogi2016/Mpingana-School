@@ -107,3 +107,42 @@
     
 })(jQuery);
 
+var ctx = document.getElementById('performanceChart').getContext('2d');
+        var performanceChart = new Chart(ctx, {
+            type: 'bar', // Bar chart
+            data: {
+                labels: ['2017', '2018', '2019', '2020', '2021', '2022'], // Years
+                datasets: [{
+                    label: 'Enrolment',
+                    data: [42, 43, 49, 37, 64, 75], // Enrollment data
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)', // Blue bars
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Percentage',
+                    data: [81, 97.4, 89.9, 80.5, 78.1, 76], // Percentage data
+                    backgroundColor: 'rgba(255, 99, 132, 0.6)', // Red bars
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Values'
+                        }
+                    }
+                },
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Grade 12 School Performance in Past Years'
+                    }
+                }
+            }
+        });
