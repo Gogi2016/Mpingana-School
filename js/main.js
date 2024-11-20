@@ -191,3 +191,63 @@ function toggleStreamOptions() {
                 window.location.href = 'index.html'; // Redirect to the home page
             };
         });
+
+   // Function to handle form submission with validation
+function handleSubmit(event) {
+    event.preventDefault();  // Prevent form from submitting until validation is complete
+
+    // Get June Results field value
+    const juneResults = document.getElementById('juneResults').value;
+
+    // Check if all required fields are filled, except June Results
+    const requiredFields = [
+        'applicantName', 'dob', 'applicantId', 'applicantEmail', 'applicantphone',
+        'homeAddress', 'race', 'gender', 'guardianName', 'guardianId', 'guardianphone',
+        'grade', 'documentType', 'documents'
+    ];
+
+    let isValid = true;
+    requiredFields.forEach(function(fieldId) {
+        const field = document.getElementById(fieldId);
+        if (!field || !field.value) {
+            isValid = false;
+        }
+    });
+
+    // Additional individual validations
+    const applicantId = document.getElementById("applicantId");
+    const email = document.getElementById("applicantEmail");
+    const phone = document.getElementById("applicantphone");
+
+    // Validate ID Number (must be exactly 13 digits)
+    if (!applicantId.value.match(/^\d{13}$/)) {
+        isValid = false;
+        alert("ID Number must be 13 digits.");
+        applicantId.focus();
+    }
+
+    // Validate Email Address
+    if (!email.validity.valid) {
+        isValid = false;
+        alert("Please enter a valid email address.");
+        email.focus();
+    }
+
+    // Validate Contact Number (must be exactly 10 digits)
+    if (!phone.value.match(/^\d{10}$/)) {
+        isValid = false;
+        alert("Contact Number must be 10 digits.");
+        phone.focus();
+    }
+
+    // If validation is successful, show success message and reset form
+    if (isValid) {
+        alert('Application has been sent successfully');
+        document.getElementById('applicationForm').reset();  // Optionally reset the form
+    } else {
+        alert('Please fill out all required fields correctly.');
+    }
+}
+
+// Attach the handleSubmit function to the form submission
+document.getElementById("applicationForm").addEventListener("submit", handleSubmit);
