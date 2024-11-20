@@ -157,41 +157,54 @@ function toggleStreamOptions() {
             }
         }
 
-        function uploadDocuments() {
-            var docType = document.getElementById('documentType').value;
-            var fileInput = document.getElementById('documents');
-            var uploadedFiles = document.getElementById('uploadedFiles');
         
-            if (!docType) {
-                alert('Please select a document type.');
-                return;
-            }
-        
-            var files = fileInput.files;
-            if (files.length === 0) {
-                alert('Please select at least one file to upload.');
-                return;
-            }
-        
-            for (var i = 0; i < files.length; i++) {
-                var file = files[i];
-                var fileDiv = document.createElement('div');
-                fileDiv.textContent = `${file.name} (${docType})`;
-                uploadedFiles.appendChild(fileDiv);
-            }
-        
-            // Optionally clear file input after upload
-            fileInput.value = '';
-        }
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('admissionForm').onsubmit = function(event) {
-                event.preventDefault(); // Prevent the default form submission
-                alert('Application Submitted'); // Show the alert
-                window.location.href = 'index.html'; // Redirect to the home page
-            };
-        });
+    // Function to handle document uploads
+function uploadDocuments() {
+    var docType = document.getElementById('documentType').value;
+    var fileInput = document.getElementById('documents');
+    var uploadedDocsList = document.getElementById('uploadedDocsList');
+    
+    if (!docType) {
+        alert('Please select a document type.');
+        return;
+    }
+    
+    var files = fileInput.files;
+    if (files.length === 0) {
+        alert('Please select at least one file to upload.');
+        return;
+    }
 
+    // Loop through the files and add them to the list
+    for (var i = 0; i < files.length; i++) {
+        var file = files[i];
+
+        // Create list item for each uploaded file
+        var listItem = document.createElement('li');
+        listItem.classList.add('uploaded-doc-item');
+        listItem.textContent = `${file.name} (${docType}) `;
+
+        // Create delete button for each file
+        var deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.classList.add('btn', 'btn-danger', 'btn-sm', 'ml-2');
+        deleteButton.onclick = function() {
+            listItem.remove(); // Remove the list item on click
+        };
+
+        listItem.appendChild(deleteButton);
+        uploadedDocsList.appendChild(listItem);
+    }
+    
+    // Optionally clear file input after upload
+    fileInput.value = '';
+}
+
+// Optional: Update file input if needed when document type changes (if required for specific handling)
+function updateFileInput() {
+    // You can handle specific file type restrictions or validation here based on selected document type
+}
+    
    // Function to handle form submission with validation
 function handleSubmit(event) {
     event.preventDefault();  // Prevent form from submitting until validation is complete
@@ -203,7 +216,7 @@ function handleSubmit(event) {
     const requiredFields = [
         'applicantName', 'dob', 'applicantId', 'applicantEmail', 'applicantphone',
         'homeAddress', 'race', 'gender', 'guardianName', 'guardianId', 'guardianphone',
-        'grade', 'documentType', 'documents'
+        'grade', 'documentType'
     ];
 
     let isValid = true;

@@ -152,31 +152,31 @@
             </div>
         </div>
     
-        <!-- Document Upload Section -->
-        <h5>Document Upload</h5>
-        <div class="mb-3">
-            <label for="documentType">Select Document Type</label>
-            <select class="form-select" id="documentType" required onchange="updateFileInput()">
-                <option value="">Select</option>
-                <option value="applicantId">Applicant ID</option>
-                <option value="parentId">Parent ID</option>
-                <option value="results">Results</option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label for="documents">Upload Document</label>
-            <input type="file" class="form-control" id="documents" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" required>
-            <small class="form-text text-muted">You can upload all three documents at once. Ensure you select the correct document type before uploading.</small>
-        </div>
-        <button type="button" class="btn btn-primary" onclick="uploadDocument()">Upload Document</button>
-    
-        <!-- Uploaded Documents -->
-        <h5 class="mt-4">Uploaded Documents</h5>
-        <div class="uploaded-documents">
-            <ul id="uploadedDocsList">
-                <!-- Uploaded documents will appear here -->
-            </ul>
-        </div>
+    <!-- Document Upload Section -->
+<h5>Document Upload</h5>
+<div class="mb-3">
+    <label for="documentType">Select Document Type</label>
+    <select class="form-select" id="documentType" required onchange="updateFileInput()">
+        <option value="">Select</option>
+        <option value="applicantId">Applicant ID</option>
+        <option value="parentId">Parent ID</option>
+        <option value="results">Results</option>
+    </select>
+</div>
+<div class="mb-3">
+    <label for="documents">Upload Document</label>
+    <input type="file" class="form-control" id="documents" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" multiple required>
+    <small class="form-text text-muted">You can upload multiple documents at once. Ensure you select the correct document type before uploading.</small>
+</div>
+<button type="button" class="btn btn-primary" onclick="uploadDocuments()">Upload Document</button>
+
+<!-- Uploaded Documents -->
+<h5 class="mt-4">Uploaded Documents</h5>
+<div class="uploaded-documents">
+    <ul id="uploadedDocsList">
+        <!-- Uploaded documents will appear here -->
+    </ul>
+</div>
     
         <!-- Submit Button -->
         <div class="text-center mt-4">
